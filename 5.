@@ -1,0 +1,26 @@
+import argparse
+import os.path
+import random
+
+parser = argparse.ArgumentParser(description = "Файл")
+parser.add_argument('-f', dest = "f")
+
+f_name = parser.parse_args().f
+is_f = os.path.exists(f_name)
+
+if is_f:
+    ftxt = (open(f_name, 'r'))
+    ftxt = ftxt.read()
+    ftxt = ftxt.split("\n")
+
+    arr_first = []
+    arr_second = []
+    for i in ftxt:
+        i = i.split(", ")
+        arr_first.append(i[0])
+        arr_second.append(i[1])
+    result = str.capitalize(random.choice(arr_first)) + str.capitalize(random.choice(arr_second))
+    print(result)
+
+else:
+    print("Данный файл отсутствует")
