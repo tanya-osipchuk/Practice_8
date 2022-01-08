@@ -1,0 +1,23 @@
+import argparse
+import os.path
+
+parser = argparse.ArgumentParser(description = 'Файл')
+parser.add_argument('-f1', dest = "f1")
+parser.add_argument('-f2', dest = "f2")
+
+f1 = parser.parse_args().f1
+f2 = parser.parse_args().f2
+
+is_f1 = os.path.exists(f1)
+is_f2 = os.path.exists(f2)
+
+if is_f1 and is_f2:
+    f1_Data = (open(f1, 'r'))
+    f1_Data = f1_Data.read()
+    f2_Data = (open(f2, 'r'))
+    f2_Data = f2_Data.read()
+    print(f1_Data + f2_Data)
+else:
+    print("Невозможна конкатенация")
+    
+    
