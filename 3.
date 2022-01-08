@@ -1,0 +1,20 @@
+import argparse
+import os.path
+
+parser = argparse.ArgumentParser(description = "Файл")
+parser.add_argument('-f', dest = "f")
+
+f_name = parser.parse_args().f
+is_f = os.path.exists(f_name)
+
+if is_f:
+    ftxt = (open(f_name, 'r'))
+    ftxt = ftxt.read()
+    ftxt = ftxt.split("\n")
+
+    new_f = open("new_f.txt", 'w')
+    for i in ftxt:
+        new_f.write("1: " + i)
+        new_f.write("\n")
+else:
+    print("Данный файл отсутствует")
